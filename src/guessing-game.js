@@ -7,12 +7,13 @@ class GuessingGame {
     }
 
     getMiddle() {
-        return Math.ceil((this.max - this.min) / 2);
+        return (this.max - this.min) / 2;
     }
 
     guess() {
         this._guess = this._guess ? this._guess : (this.min + this.getMiddle());
-        return this._guess;
+
+        return Math.ceil(this._guess);
     }
 
     lower() {
