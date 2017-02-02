@@ -7,17 +7,19 @@ class GuessingGame {
     }
 
     guess() {
-        this.lastGuess = this.lastGuess ? this.lastGuess : Math.ceil(this.min + (this.max - this.min) / 2);
-        return this.lastGuess;
+        this._guess = this._guess ? this._guess : (this.min + ((this.max - this.min) / 2));
+        return Math.ceil(this._guess);
     }
 
     lower() {
-        this.lastGuess = Math.ceil(this.min + (this.lastGuess - this.min) / 2);
+        this.lastGuess = this._guess;
+        this._guess = this.lastGuess + (this.lastGuess / 2);
         this.guess();
     }
 
     greater() {
-        this.lastGuess = Math.ceil(this.max - (this.max - this.lastGuess) / 2);
+        this.lastGuess = this._guess;
+        this._guess = this.lastGuess - (this.lastGuess / 2);
         this.guess();
     }
 }
