@@ -6,20 +6,26 @@ class GuessingGame {
         this.max = max;
     }
 
+    getMiddle() {
+        return Math.ceil((this.max - this.min) / 2);
+    }
+
     guess() {
-        this._guess = this._guess ? this._guess : (this.min + ((this.max - this.min) / 2));
-        return Math.ceil(this._guess);
+        this._guess = this._guess ? this._guess : (this.min + this.getMiddle());
+        return this._guess;
     }
 
     lower() {
-        this.lastGuess = this._guess;
-        this._guess = this.lastGuess + (this.lastGuess / 2);
+        this.max = this._guess;
+        this._guess = this.max - this.getMiddle();
+
         this.guess();
     }
 
     greater() {
-        this.lastGuess = this._guess;
-        this._guess = this.lastGuess - (this.lastGuess / 2);
+        this.min = this._guess;
+        this._guess = this.min + this.getMiddle();
+
         this.guess();
     }
 }
