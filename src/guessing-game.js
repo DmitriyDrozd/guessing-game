@@ -17,14 +17,14 @@ class GuessingGame {
     }
 
     lower() {
-        this.max = this._guess;
+        this.max = Math.ceil(this._guess);
         this._guess = this.max - this.getMiddle();
 
         this.guess();
     }
 
     greater() {
-        this.min = this._guess;
+        this.min = Math.ceil(this._guess);
         this._guess = this.min + this.getMiddle();
 
         this.guess();
